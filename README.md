@@ -1,55 +1,30 @@
-# Sinatra Active Record Starter Kit
+# Ghost Tour Scheduler
 
-This template provides a basic [Sinatra](http://www.sinatrarb.com/) application
-that includes:
+Review of ActiveRecord migrations, associations, querying, and validations.
 
-- [Active Record](http://guides.rubyonrails.org/active_record_querying.html)
-using [sinatra-activerecord](https://github.com/janko-m/sinatra-activerecord)
-- [PostgreSQL](http://www.postgresql.org/) for a database
-- [Sinatra::Reloader](http://www.sinatrarb.com/contrib/reloader.html) to
-  automatically reload modified files during development
-- [RSpec](https://github.com/rspec/rspec) for unit testing
-- [Capybara](https://github.com/jnicklas/capybara) for acceptance testing
-- [Pry](https://github.com/pry/pry) for debugging
+I want to organize the contact info for the [actors at my tourism company](http://www.ghostsandgravestones.com/boston/gravestones-guide.php) and keep track of who performs in each show. Here's the basic set up:
 
-## Getting Started
+## Actors
+  - Should have email and phone number
+  - Can have first and last name
+  - Actors can belong to multiple tours
 
-```no-highlight
-# Clone down this template
-git clone git@github.com:LaunchAcademy/sinatra-activerecord-starter-kit.git <YOUR_APP_NAME>
+## Tours
+  - Should have a name
+  - Can optionally have a description, but not too long!
+  - Can have many actors assigned to work on it
 
-# Move into your app's directory
-cd <YOUR_APP_NAME>
+For example, Constance Caskette should be able to perform in both the Blood-Curdling Chills tour at 8PM and 10PM and the Graveyard Smash tour at 11PM. Lily Winters should be able to join her for the 8PM Blood-Curdling Chills tour at 10PM, but NOT 8PM.
 
-# Install all the gems
-bundle install
+## Pro Tips
 
-# Remove the old git history and start your own
-rm -rf .git && git init && git add -A && git commit -m 'Initial commit'
-```
+"Should" is an indicator that a validation may be necessary to enforce a business requirement. "Can" is an indicator that we need a column/attribute, but maybe we don't need to enforce it strictly. Look for language about associations between objects to decide how to design the schema. 
 
-### Configuring Your Database
+Start by designing a schema, drawing an ER diagram, and then create migrations one by one, rolling each back to make sure that it can be reverted. Don't forget validations on your models!
 
-This template is set up for using a PostgreSQL database. You will need to create a
-`config/database.yml`. There is an example at `config/database.example.yml`.
+Use [https://github.com/LaunchAcademy/sinatra-activerecord-starter-kit](this Active Record Starter Kit) to get moving quickly.
 
-Once you've created a `config/database.yml`, you can create your database with
-`rake db:create`.
+Let's keep track of what commands we write to test our associations here:
 
-## Rake Tasks
-
-This template uses the [sinatra-activerecord](https://github.com/janko-m/sinatra-activerecord)
-gem, which provides the following rails-like rake tasks:
-
-```no-highlight
-rake db:create            # create the database from config/database.yml from the current Sinatra env
-rake db:create_migration  # create an ActiveRecord migration
-rake db:drop              # drops the data from config/database.yml from the current Sinatra env
-rake db:migrate           # migrate the database (use version with VERSION=n)
-rake db:rollback          # roll back the migration (use steps with STEP=n)
-rake db:schema:dump       # dump schema into file
-rake db:schema:load       # load schema into database
-rake db:seed              # load the seed data from db/seeds.rb
-rake db:setup             # create the database and load the schema
-rake db:test:prepare      # Prepare test database from development schema
-```
+### Actors should have email and phone number
+Actor.create(email: "spooky@gmail.com", phone_number: "555-555-5555")

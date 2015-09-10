@@ -14,7 +14,7 @@ I want to organize the contact info for the [actors at my tourism company](http:
   - Can optionally have a description, but not too long!
   - Can have many actors assigned to work on it
 
-For example, Constance Caskette should be able to perform in both the Blood-Curdling Chills tour at 8PM and 10PM and the Graveyard Smash tour at 11PM. Lily Winters should be able to join her for the 8PM Blood-Curdling Chills tour at 10PM, but NOT 8PM.
+For example, Constance Caskette should be able to perform in both the Spooky Shipyards tour at 8PM and 10PM and the Graveyard Smash tour at 11PM. Lily Winters should be able to join her for the 8PM Spooky Shipyards tour at 10PM, but NOT 8PM.
 
 ## Pro Tips
 
